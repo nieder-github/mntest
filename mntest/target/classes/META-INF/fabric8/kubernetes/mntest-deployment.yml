@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mntest
+    provider: fabric8
+    version: "1.0"
+    group: nieder
+  name: mntest
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: mntest
+      provider: fabric8
+      group: nieder
+  template:
+    metadata:
+      labels:
+        app: mntest
+        provider: fabric8
+        version: "1.0"
+        group: nieder
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: env-config
+        name: mntest
