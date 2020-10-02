@@ -40,6 +40,22 @@
           </execution>
         </executions>
         <configuration>
+           <images>
+	     <image>
+               <name>mntest</name>
+               <build>
+<from>fabric8/java</from>
+        <assembly>
+          <basedir>/deployments</basedir>
+          <descriptorRef>artifact-with-dependencies</descriptorRef>
+        </assembly>
+        <env>
+          <JAVA_LIB_DIR>/deployments</JAVA_LIB_DIR>
+          <JAVA_MAIN_CLASS>mn.MnTest</JAVA_MAIN_CLASS>
+        </env>
+               </build>
+             </image>
+           </images>
            <generator>
               <config>
                 <java-exec> 
